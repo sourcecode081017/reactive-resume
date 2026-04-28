@@ -1,3 +1,4 @@
+import { ensureAbsoluteUrl } from "@/utils/url";
 import { cn } from "@/utils/style";
 
 type LinkedTitleProps = {
@@ -10,7 +11,7 @@ type LinkedTitleProps = {
 export function LinkedTitle({ title, website, showLinkInTitle, className }: LinkedTitleProps) {
   if (showLinkInTitle && website?.url) {
     return (
-      <a href={website.url} target="_blank" rel="noopener" className={cn("inline", className)}>
+      <a href={ensureAbsoluteUrl(website.url)} target="_blank" rel="noopener" className={cn("inline", className)}>
         <strong>{title}</strong>
       </a>
     );
